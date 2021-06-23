@@ -53,6 +53,7 @@ print('-'*100+'11번')
 
 
 
+
 '''
 pd.DataFrame(np.random.randint(0, 100, size=(2,3)))
 ''.join(random.choice(string.ascii_letters) for i in range(5))
