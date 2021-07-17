@@ -1,2 +1,2 @@
-username = "kuda._.mono"
-password = "asdfqwer12"
+username = ""
+password = ""
