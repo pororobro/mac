@@ -2,6 +2,7 @@ from selenium import webdriver
 from time import sleep
 from creditentials import username, password
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 
 
 class InstaUnfollowers:
@@ -31,7 +32,7 @@ class InstaUnfollowers:
         prev_height, height = 0, 1
         while prev_height != height:
             prev_height = height
-            sleep(3)
+            sleep(2)
             height = self.driver.execute_script("""
                 arguments[0].scrollTo(0, arguments[0].scrollHeight); 
                 return arguments[0].scrollHeight;
@@ -46,19 +47,28 @@ class InstaUnfollowers:
         # change to your username
         self.driver.get("https://www.instagram.com/2oya123/")
         sleep(2)
+        Followers = self.driver.find_element_by_xpath("//a[contains(@href,'/followers')]")
+        Followers.click()
+        followers = self.get_people(k="2")
+        sleep(2)
         Following = self.driver.find_element_by_xpath("//a[contains(@href,'/following')]")
         Following.click()
         following = self.get_people(k="3")
         # print(following)
-        Followers = self.driver.find_element_by_xpath("//a[contains(@href,'/followers')]")
-        Followers.click()
-        followers = self.get_people(k="2")
+       
         not_following_back = [user for user in following if user not in followers]
         print(not_following_back)
+
+    # def delete_unfollowers(self):
+    #     sleep(3)
+    #     Searching = self.driver.find_element_by_xpath("//*[@id="'react-root'"]/section/nav/div[2]/div/div/div[2]/input")
+    #     Searching.click()
+    #     Searching.send_value('hi')
 
 
 my_bot = InstaUnfollowers(username, password)
 my_bot.get_unfollowers()
+
 try:
     my_bot.driver.close()
 except:
