@@ -45,7 +45,7 @@ class InstaUnfollowers:
 
     def get_unfollowers(self):
         # change to your username
-        self.driver.get("https://www.instagram.com/2oya123/")
+        self.driver.get("https://www.instagram.com/1eeseungjin/")
         sleep(2)
         Followers = self.driver.find_element_by_xpath("//a[contains(@href,'/followers')]")
         Followers.click()
